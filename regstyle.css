@@ -1,0 +1,84 @@
+/* styles.css */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+  background-color: rgba(255, 209, 220, 0.8);
+  padding: 1em;
+}
+h1 {
+  color: #e48fa5; /* Change to your desired heading color */
+}
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+
+#registration-form,
+#login-form {
+  text-align: center;
+  background-color: rgba(255, 209, 220, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px; /* Set the desired width for the form */
+  margin: top 0px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: white;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #e48fa5;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #e8bac6;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.logo {
+  padding: 1px; /* Replace with your desired padding value */
+  height: auto;
+  left: 50px;
+  width: 100px;
+}
+
+.flash-message {
+  background-color: #4caf50; /* Green background color */
+  color: white; /* White text color */
+  text-align: center; /* Center text */
+  padding: 10px; /* Padding around the text */
+  margin-bottom: 10px; /* Margin at the bottom */
+}

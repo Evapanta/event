@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bookingstylee.css" />
+    <title>Booking - EventHub</title>
+    <script defer src="booking-script.js"></script>
+  </head>
+  <body>
+    <div class="page-container">
+      <header>
+        <img
+          class="logo"
+          src="image/logo.png"
+          alt="Logo"
+          width="80"
+          height="auto"
+        />
+        <h1>Book Your Event</h1>
+      </header>
+
+      <section class="booking-section">
+        <h2>Select Event and Details</h2>
+
+        <form id="bookingForm" onsubmit="showMessage(); return false;">
+          <form action="/bookings" method="post"></form>
+          <select id="event" name="event" required>
+            <option value="conference">Conference 2024</option>
+            <option value="wedding">Wedding</option>
+            <option value="wedding">Baby shower</option>
+            <option value="wedding">concert</option>
+            <option value="wedding">Bartabanda</option>
+            <option value="wedding">Birthday</option>
+            <option value="wedding">Anniversary</option>
+            <option value="wedding">Pasni</option>
+            <option value="wedding">Holi</option>
+            <option value="wedding">others</option>
+          </select>
+          <form id="booking-section" onsubmit="showMessage(); return false ">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            required
+          />
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email"
+            required
+          />
+
+          <input
+            type="date"
+            id="date"
+            name="date"
+            placeholder="select event day"
+          />
+          <input
+            type="price"
+            id="price"
+            name="price"
+            placeholder="price range"
+          />
+          <input type="submit" value="Book Now" />
+        </form>
+        <div id="flashMessage" class="flash-message"></div>
+       
+      </section>
+      <footer>
+        <p>&copy; 2024 EventHub. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>

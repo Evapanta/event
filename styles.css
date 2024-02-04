@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.page-container {
+  flex: 1;
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header,
+nav,
+section {
+  background-color: rgba(255, 209, 220, 0.8);
+  padding: 1em;
+  margin: 10px;
+  text-align: center;
+}
+
+nav {
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+nav a {
+  text-decoration: none;
+  color: rgb(7, 6, 6);
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ff5c8d; /* Change to your desired hover color */
+}
+
+img {
+  float: left;
+  max-width: 40%;
+  margin-right: 20px;
+  height: 500px;
+}
+
+.justified-text {
+  text-align: justify;
+}
+
+footer {
+  background-color: rgba(255, 209, 220, 0.8);
+  padding: 1em;
+  margin-top: auto; /* Push the footer to the bottom */
+  text-align: center;
+}
+
+.logo {
+  padding: 10px; /* Replace with your desired padding value */
+  height: auto;
+  left: 0px;
+  width: 150px;
+}
