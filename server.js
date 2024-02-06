@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const { Client } = require("pg");
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 // PostgreSQL database connection setup
 const client = new Client({
@@ -12,6 +12,7 @@ const client = new Client({
   database: "events",
   password: "admin",
   port: 5432,
+  keepAlive: true,
 });
 
 client.connect();
@@ -24,14 +25,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Define route for the registration form submission
-app.get("/registration", async (req, res) => {
+app.post("/registration", async (req, res) => {
   try {
-    const { fname, email, password, confirm_password } = req.body;
+    const { email, password } = req.body;
 
     // Insert registration data into the database
     const result = await client.query(
-      "INSERT INTO registration (fname, email, password, confirm_password) VALUES ($1, $2, $3, $4) RETURNING *",
-      [fname, email, password, confirm_password]
+      "INSERT INTO registration (name, email, password,) VALUES ($1, $2, $3, $4) RETURNING *",
+      [email, password]
     );
 
     // Send a response to the client
@@ -43,17 +44,16 @@ app.get("/registration", async (req, res) => {
 });
 
 // Define route for the booking form submission
-app.get("/bookings", async (req, res) => {
+app.post("/bookings", async (req, res) => {
   try {
-    const { event, name, email, date, price } = req.body;
+    console.log("/bookings:", req.body);
+    const { eventname, useremail, eventdate, price } = req.body;
 
-    // Insert booking data into the database
     const result = await client.query(
-      "INSERT INTO bookings (event_name, user_name, user_email, event_date, price) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [event, name, email, date, price]
+      'INSERT INTO "Booking" (eventname, useremail, eventdate, price) VALUES ($1, $2, $3, $4) RETURNING *',
+      [eventname, useremail, eventdate, price]
     );
 
-    // Send a response to the client
     res.json(result.rows[0]);
   } catch (error) {
     console.error(error);
@@ -62,7 +62,7 @@ app.get("/bookings", async (req, res) => {
 });
 
 // Define route for the contact form submission
-app.get("/contacts", async (req, res) => {
+app.post("/contacts", async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
@@ -71,6 +71,8 @@ app.get("/contacts", async (req, res) => {
       "INSERT INTO contacts (name, email, message) VALUES ($1, $2, $3) RETURNING *",
       [name, email, message]
     );
+
+    console.log(result);
 
     // Send a response to the client
     res.json(result.rows[0]);

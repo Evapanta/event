@@ -14,34 +14,45 @@
 
       <section class="contact-section">
         <h2>Get in Touch</h2>
-
-        <form action="#" method="post">
           <form action="/contacts" method="post"></form>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your name"
-            required
-          />
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="your email"
-            required
-          />
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            placeholder="Talk to us"
-            required
+          <input type="text"id="name"name="name"placeholder="Your name"required/>
+          <input type="email"id="email"name="email"placeholder="your email" required/>
+          <textarea id="message" name="message" rows="4"placeholder="Talk to us"required
           ></textarea>
 
           <input type="submit" value="Send Message" />
-        </form>
+    
+        <script>
+          document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+      
+            const formData = {
+              name: document.getElementById("name").value,
+              email: document.getElementById("email").value,
+              message: document.getElementById("message").value,
+            };
+      
+            fetch("http://localhost:3000/contacts", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log("Message sent:", data);
+              // Handle success, e.g., show a success message or redirect
+            })
+            .catch(error => {
+              console.error("Message failed to send:", error);
+              // Handle error, e.g., show an error message
+            });
+          });
+        </script>
+      
+      </body>
+      </html>
       </section>
 
       <footer>

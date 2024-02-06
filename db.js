@@ -17,7 +17,7 @@ client.query('SELECT * FROM events."Booking"', (err, result) => {
   console.log(result.rows); // Result rows from the SELECT query
 
   // Close the connection after the query is executed
-  client.end();
+  // client.end();
 });
 
 module.exports = client;

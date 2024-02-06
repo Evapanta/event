@@ -24,7 +24,7 @@
         <h2>Select Event and Details</h2>
 
         <form id="bookingForm" onsubmit="showMessage(); return false;">
-          <form action="/bookings" method="post"></form>
+          <form action="/bookings" method="post">
           <select id="event" name="event" required>
             <option value="conference">Conference 2024</option>
             <option value="wedding">Wedding</option>
@@ -69,7 +69,36 @@
           <input type="submit" value="Book Now" />
         </form>
         <div id="flashMessage" class="flash-message"></div>
-       
+       <!-- Include this script in your contact form HTML file -->
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value,
+    };
+
+    fetch("http://localhost:3000/contacts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Contact form submitted:", data);
+        // Handle success, e.g., show a success message or redirect
+      })
+      .catch((error) => {
+        console.error("Contact form submission failed:", error);
+        // Handle error, e.g., show an error message
+      });
+  });
+</script>
+
       </section>
       <footer>
         <p>&copy; 2024 EventHub. All rights reserved.</p>

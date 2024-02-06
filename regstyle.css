@@ -81,4 +81,24 @@ input[type="submit"]:hover {
   text-align: center; /* Center text */
   padding: 10px; /* Padding around the text */
   margin-bottom: 10px; /* Margin at the bottom */
+  font-weight: bold;
+  display: none; /* Hide initially */
+}
+/* Add this to your existing CSS file or create a new one */
+.flash-message {
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  font-weight: bold;
+  display: none; /* Hide initially */
+}
+
+.success {
+  color: green;
+  background-color: #dff0d8; /* Light green background */
+}
+
+.error {
+  color: red;
+  background-color: #f2dede; /* Light red background */
 }

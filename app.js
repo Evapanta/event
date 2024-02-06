@@ -138,7 +138,7 @@ app.post("/contacts", async (req, res) => {
 
     // Insert contact into the database
     const result = await client.query(
-      "INSERT INTO contacts (name, email, message) VALUES ($1, $2, $3) RETURNING *",
+      "INSERT INTO contact (name, email, message) VALUES ($1, $2, $3) RETURNING *",
       [name, email, message]
     );
 

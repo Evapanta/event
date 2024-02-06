@@ -38,38 +38,56 @@
             />
 
             <input type="submit" value="Register" />
-          </form>
-          <div id="flashMessage" class="flash-message"></div>
-
-          <script src="script.js">
-            document.getElementById("registrationForm").addEventListener("submit", function (event) {
-              event.preventDefault();
-
-              const formData = new FormData(event.target);
-
-              fetch("http://localhost:3000/register", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(Object.fromEntries(formData)),
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                  // Handle the response from the server
-                  console.log(data);
+            <div id="flashMessage" class="flash-message"></div>
+            <script>
+              function submitRegistrationForm(event) {
+                event.preventDefault();
+  
+                const formData = {
+                  name: document.getElementById("fname").value,
+                  email: document.getElementById("email").value,
+                  password: document.getElementById("password").value,
+                  confirm_password: document.getElementById("confirm_password").value,
+                };
+  
+                fetch("http://localhost:3000/registration", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(formData),
                 })
-                .catch((error) => {
-                  console.error("Error:", error);
-                });
-            });
-          </script>
-        </div>
-      </section>
-      <footer>
-        <p>&copy; 2024 EventHub. All rights reserved.</p>
-      </footer>
-    </div>
-  </body>
-</html>
+                  .then((response) => response.json())
+                  .then((data) => {
+                    // Display success message
+                    showFlashMessage(`Registration successful: ${JSON.stringify(data)}`, "success");
+                  })
+                  .catch((error) => {
+                    // Display error message
+                    showFlashMessage(`Registration failed: ${error.message}`, "error");
+                  });
+              }
+  
+              function showFlashMessage(message, messageType) {
+                const flashMessage = document.getElementById("flashMessage");
+                flashMessage.innerHTML = message;
+                flashMessage.className = `flash-message ${messageType}`;
+                flashMessage.style.display = "block"; // Show the flash message
+  
+                // Hide the flash message after 3 seconds (adjust the timeout as needed)
+                setTimeout(() => {
+                  flashMessage.style.display = "none";
+                }, 3000);
+              }
+            </script>
+          </div>
+        </section>
+        <footer>
+          <p>&copy; 2024 EventHub. All rights reserved.</p>
+        </footer>
+      </div>
+    </body>
+  </html>
+            
+         
           

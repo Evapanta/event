@@ -15,5 +15,14 @@
   "main": "app.js",
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evapanta/event.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Evapanta/event/issues"
+  },
+  "homepage": "https://github.com/Evapanta/event#readme",
   "description": ""
 }
